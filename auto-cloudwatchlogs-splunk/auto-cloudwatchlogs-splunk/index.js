@@ -39,6 +39,9 @@ exports.handler = (event, context, callback) => {
         if (err) {
             callback(err);
         } else {
+            const parsed = JSON.parse(result.toString('ascii'));
+            console.log('Decoded payload:', JSON.stringify(parsed, null, 2));
+            console.log('Decoded sourcetype:', parsed.logStream);
             let count = 0;
             if (parsed.logEvents) {
                 var host;
